@@ -32,6 +32,11 @@ node('linux'){
     }
     
     stage('Reports'){
-        junit 'reports/*.xml'
+        
+// The pipeline will generate a report of the CloudFormation stack resources created
+//in your environment using the command: aws cloudformation describe- stack-resources --region us-east-1 --stack-name jenkins
+//Note: you will need to setup proper IAM and Jenkins access credentials to run this command.
+     
+      sh 'aws cloudformation describe- stack-resources --region us-east-1 --stack-name jenkins'   
     }
 }
