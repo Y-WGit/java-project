@@ -12,8 +12,9 @@ node('linux'){
     }
     
     stage('Build'){
-        git 'https://github.com/Y-WGit/java-project.git'
-        sh "ant"
+ //The pipeline will compile the Java application using ant.
+ //The shell command to compile the application is ant -f build.xml -v    
+        sh "ant -f build.xml -v"
     }
     
     stage('Test'){
