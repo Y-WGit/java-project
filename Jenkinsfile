@@ -27,7 +27,7 @@ node('linux'){
 //proper role attached which allows it to access the S3 bucket.
         
   sh'''   
-  aws s3 cp /workspace/java-pipeline/dist/ s3://arn:aws:s3:::hw10-s3-b/ --recursive --exclude "*" --include "*.jar"      
+  aws s3 cp /workspace/java-pipeline/dist/ s3://hw10-s3-b/ --recursive --exclude "*" --include "*.jar"      
    '''     
     }
     
