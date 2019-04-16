@@ -17,8 +17,20 @@ node('linux'){
         sh "ant -f build.xml -v"
     }
     
-    stage('Test'){
-        sh "ant -buildfile test.xml"
+    stage('Deploy'){
+//The pipeline will copy the build output jar file into an S3 bucket (use an existing S3 bucket or 
+        //create a new one for this assignment).
+//The name of the output jar file will look something like rectangle-2.jar, where the number represents 
+        //the current Jenkins build number.
+//You can use the AWS CLI to copy files from Jenkins to the S3 bucket. Don’t worry about access credentials 
+        //for this step because the Jenkins server has a
+//proper role attached which allows it to access the S3 bucket.
+        
+aws s3 /workspace/java-pipeline/dist/ s3://bucket/ --recursive \
+    --exclude "*" --include "*.jar" 
+        
+        
+        
     }
     
     stage('Reports'){
