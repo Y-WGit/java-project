@@ -26,11 +26,9 @@ node('linux'){
         //for this step because the Jenkins server has a
 //proper role attached which allows it to access the S3 bucket.
         
-aws s3 /workspace/java-pipeline/dist/ s3://bucket/ --recursive \
-    --exclude "*" --include "*.jar" 
-        
-        
-        
+  sh'''   
+  aws s3 cp /workspace/java-pipeline/dist/ s3://bucket/ --recursive --exclude "*" --include "*.jar"      
+   '''     
     }
     
     stage('Reports'){
